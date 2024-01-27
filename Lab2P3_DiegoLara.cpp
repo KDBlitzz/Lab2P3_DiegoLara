@@ -5,19 +5,19 @@ using namespace std;
 #include<time.h>
 #include<stdlib.h>
 #include <locale>
-int generarNumRandom(int minimo, int maximo) {
+int generarNumRandom(int minimo, int maximo) { // metodo para generar numeros al azar de un rango
 	int random;
 	random = 0;
 	random = minimo + (rand() % maximo);
 	return random;
 }
-void ejercicio_1() {
+void ejercicio_1() { // Ejercicio 1
 	double promedio = 0;
 	double sumatoria = 0;
 	double desviacionTipica = 0;
 	double arreglo[10];
 	int random = 0;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++) // for que genera los numeros al azar y los pone en el arreglo
 	{
 		random = 0;
 		random = generarNumRandom(100, 401);
@@ -26,13 +26,13 @@ void ejercicio_1() {
 	for (int i = 0; i < 10; i++)
 	{
 		promedio += arreglo[i];
-	}
-	promedio = promedio / 10;
+	} // for que agarra los valores del arreglo y los acumula en una variable
+	promedio = promedio / 10; // para despues sacarles el promedio
 	for (int i = 0; i < 10; i++)
 	{
 		sumatoria += ((arreglo[i] - promedio) * (arreglo[i] - promedio)) / 10;
 		desviacionTipica = sqrt(sumatoria);
-	}
+	} // for que hace todo la ecuacion
 
 
 	cout << "Arreglo Generado: " << endl;
@@ -46,14 +46,14 @@ void ejercicio_1() {
 		else {
 			cout << arreglo[i];
 		}
-	}
+	} // imprime el arreglo
 	cout << "]" << endl;
 	cout << "La desviación estándar es: " << desviacionTipica << endl;
 }
-void ejercicio_2() {
+void ejercicio_2() { // Ejercio 2
 	int random = 0;
-	int arreglo[10] = {1,2,3,4,5,6,7,8,9,10};
-/*	for (int i = 0; i < 10; i++)
+	int arreglo[10];
+	for (int i = 0; i < 10; i++) // meter los numeros al azar adentro del arreglo
 	{
 		random = generarNumRandom(-9, 19);
 		arreglo[i] = random;
@@ -69,40 +69,74 @@ void ejercicio_2() {
 		else {
 			cout << arreglo[i];
 		}
-	}
-	
-	cout << "]" << endl;*/
+	} // imprimir el arreglo
+
+	cout << "]" << endl;
 	int contador = 1;
 	int temporal = 0;
-		for (int i = 1; i <= 10; i++)
+	for (int i = 1; i <= 10; i++) // for que va del 1 al 10 validando que numeros estan adentro del arreglo
+	{
+		if (contador == arreglo[i])
 		{
-			if (contador == arreglo[i])
+			contador++;
+			i = 1;
+		}
+		else {
+			if (temporal > contador) // condicion if que comprueba el minimo numero entero
 			{
-				contador++;
-				i = 0;
-			}
-			else {
-				if (temporal > contador)
-				{
-					temporal = contador;
-				}
 				temporal = contador;
 			}
+			temporal = contador;
 		}
-		if (temporal == 10)
-		{
-			cout << "No hay ningún número positivo faltante en el arreglo";
-		}
+	}
+	if (contador == 10)
+	{
+		cout << "No hay ningún número positivo faltante en el arreglo" << endl;
+	}
+	else {
 		cout << temporal << endl;
+	}
 }
-void ejercicio_3() {
+
+void recursiva(int& a, int& b) { // recursiva
+	if (&a != &b)
+	{
+		cout << a << " " << b;
+		cout << endl;
+	}
+	else {
+		a++;
+		b--;
+		recursiva(a, b);
+	}
+}
+void swap(int& a, int& b) { // swap para las variables adentro del arreglo
+	int acumulador;
+	acumulador = b;
+	b = a;
+	a = acumulador;
+	recursiva(a, b);
+}
+void ejercicio_3() { // ejercicio 3
 	int arreglo[7] = { 1,2,3,4,5,6,7 };
-
-}
-void swap(int n, int m) {
-}
-void recursiva() {
-
+	cout << "Antes de Divertirme" << endl;
+	for (int i = 0; i < 7; i++) // Imprimir el arreglo
+	{
+		if (i != 6)
+		{
+			cout << arreglo[i] << " ";
+		}
+		else {
+			cout << arreglo[i];
+		}
+	}
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 1; j < 7; j++)
+		{
+			swap(arreglo[i], arreglo[j]);
+		}
+	}
 }
 void menu() {
 	bool menu = true;
@@ -121,6 +155,7 @@ void menu() {
 			ejercicio_2();
 			break;
 		case 3:
+			ejercicio_3();
 			break;
 		case 4:
 			menu = false;
