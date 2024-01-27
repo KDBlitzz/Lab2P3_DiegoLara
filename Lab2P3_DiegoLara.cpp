@@ -51,7 +51,27 @@ void ejercicio_1() {
 	cout << "La desviación estándar es: " << desviacionTipica << endl;
 }
 void ejercicio_2() {
-	int arreglo[10] = {6,-6,9,1,-8,2,-1,0,10,7};
+	int random = 0;
+	int arreglo[10] = {1,2,3,4,5,6,7,8,9,10};
+/*	for (int i = 0; i < 10; i++)
+	{
+		random = generarNumRandom(-9, 19);
+		arreglo[i] = random;
+	}
+	cout << "Arreglo Generado: ";
+	cout << "[";
+	for (int i = 0; i < 10; i++)
+	{
+		if (i != 9)
+		{
+			cout << arreglo[i] << ",";
+		}
+		else {
+			cout << arreglo[i];
+		}
+	}
+	
+	cout << "]" << endl;*/
 	int contador = 1;
 	int temporal = 0;
 		for (int i = 1; i <= 10; i++)
@@ -66,10 +86,14 @@ void ejercicio_2() {
 				{
 					temporal = contador;
 				}
-				
+				temporal = contador;
 			}
 		}
-	
+		if (temporal == 10)
+		{
+			cout << "No hay ningún número positivo faltante en el arreglo";
+		}
+		cout << temporal << endl;
 }
 void ejercicio_3() {
 	int arreglo[7] = { 1,2,3,4,5,6,7 };
@@ -94,6 +118,7 @@ void menu() {
 			ejercicio_1();
 			break;
 		case 2:
+			ejercicio_2();
 			break;
 		case 3:
 			break;
